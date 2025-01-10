@@ -14,7 +14,7 @@ function App() {
       </header>
 	  <hr />
       <div className="App-body">
-        <p>Login to access the full dashboard</p>
+        <p className="indent">Login to access the full dashboard</p>
 	    <label htmlFor="email" className="shift">Email:</label>
 	    <input type="email" name="email" id="email" />
 	    <label htmlFor="password" className="pad">Password:</label>

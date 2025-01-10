@@ -6,5 +6,9 @@ function getFooterCopy(isIndex) {
   return isIndex ? 'ALX' : 'ALX main dashboard';
 }
 
+function getLatestNotification() {
+  return '<strong>Urgent requirement</strong> - complete by EOD';
+}
+
 export default getFullYear;
-export { getFooterCopy };
+export { getFooterCopy, getLatestNotification };
