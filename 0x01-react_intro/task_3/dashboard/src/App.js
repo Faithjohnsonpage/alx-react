@@ -7,13 +7,13 @@ function App() {
   return (
     <>
       <header>
-        <div className="App-header">
+        <div className="App-header" data-testid="app-header">
           <img src={logo} alt="ALX Logo" width="400" height="400" />
           <h1 className="to-side">School dashboard</h1>
         </div>
       </header>
 	  <hr />
-      <div className="App-body">
+      <div className="App-body" data-testid="app-body">
         <p className="indent">Login to access the full dashboard</p>
 	    <label htmlFor="email" className="shift">Email:</label>
 	    <input type="email" name="email" id="email" />
@@ -22,7 +22,7 @@ function App() {
 	    <button className="margi">OK</button>
       </div>
 	  <hr />
-      <footer className="App-footer">
+      <footer className="App-footer" data-testid="app-footer">
         <p>Copyright {getFullYear()} - {getFooterCopy(true)}</p>
       </footer>
     </>
