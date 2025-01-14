@@ -1,14 +1,14 @@
 {
   "files": {
-    "main.css": "/0x01-react_intro/task_4/dashboard/static/css/main.c998dded.css",
-    "main.js": "/0x01-react_intro/task_4/dashboard/static/js/main.07eeb631.js",
-    "static/media/logo.jpg": "/0x01-react_intro/task_4/dashboard/static/media/logo.24bab5d633e36ca8d17e.jpg",
-    "index.html": "/0x01-react_intro/task_4/dashboard/index.html",
-    "main.c998dded.css.map": "/0x01-react_intro/task_4/dashboard/static/css/main.c998dded.css.map",
-    "main.07eeb631.js.map": "/0x01-react_intro/task_4/dashboard/static/js/main.07eeb631.js.map"
+    "main.css": "/alx-react/static/css/main.c998dded.css",
+    "main.js": "/alx-react/static/js/main.0a7f1cbb.js",
+    "static/media/logo.jpg": "/alx-react/static/media/logo.24bab5d633e36ca8d17e.jpg",
+    "index.html": "/alx-react/index.html",
+    "main.c998dded.css.map": "/alx-react/static/css/main.c998dded.css.map",
+    "main.0a7f1cbb.js.map": "/alx-react/static/js/main.0a7f1cbb.js.map"
   },
   "entrypoints": [
     "static/css/main.c998dded.css",
-    "static/js/main.07eeb631.js"
+    "static/js/main.0a7f1cbb.js"
   ]
 }
