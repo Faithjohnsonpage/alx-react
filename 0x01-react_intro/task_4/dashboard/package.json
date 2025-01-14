@@ -2,7 +2,7 @@
   "name": "dashboard",
   "version": "0.1.0",
   "private": true,
-  "homepage": "http://Faithjohnsonpage.github.io/0x01-react_intro",
+  "homepage": "http://Faithjohnsonpage.github.io/0x01-react_intro/task_4/dashboard",
   "dependencies": {
     "cra-template": "1.2.0",
     "react": "^19.0.0",
