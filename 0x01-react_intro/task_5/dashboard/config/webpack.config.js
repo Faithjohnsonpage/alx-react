@@ -12,6 +12,7 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, '../dist/index.html'),
       title: 'React App',
+	  favicon: path.resolve(__dirname, '../dist/favicon.ico'),
     }),
   ],
   module: {
