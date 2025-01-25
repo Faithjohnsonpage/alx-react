@@ -1,0 +1,20 @@
+table {
+  border-collapse: collapse;
+  width: calc(100% - 100px);
+  margin: auto;
+  /*min-width: 300px;*/
+}
+
+th,
+td {
+  border: 1px solid #cecfd5;
+  padding: 10px 15px;
+}
+
+thead tr:last-child {
+  text-align: left;
+}
+
+.App-body {
+  min-height: calc(100vh - 480px);
+}
