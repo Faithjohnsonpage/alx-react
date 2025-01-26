@@ -1,0 +1,9 @@
+h1 {
+  color: #F03D2B;
+}
+
+.to-side {
+  display: inline-block;
+  position: relative;
+  bottom: 200px;
+}
