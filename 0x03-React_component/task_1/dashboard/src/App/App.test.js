@@ -1,5 +1,6 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import App from './App';
 
 describe("#App", () => {
@@ -46,13 +47,28 @@ describe("#App", () => {
   });
 
   describe("App Component", () => {
-    test("calls logOut and displays alert when Ctrl + h is pressed", () => {
+    let originalAlert;
+
+    beforeAll(() => {
+      // Store the original window.alert
+      originalAlert = window.alert;
+      // Replace window.alert with a mock function
+      window.alert = jest.fn();
+    });
+
+    afterAll(() => {
+      // Restore original window.alert after all tests
+      window.alert = originalAlert;
+    });
+
+    test("calls logOut and displays alert when Ctrl + h is pressed", async () => {
+      const user = userEvent.setup();
       const logOutMock = jest.fn();
-      const alertMock = jest.spyOn(window, "alert").mockImplementation(() => {});
+      const alertMock = jest.spyOn(window, "alert");
 
       render(<App logOut={logOutMock} />);
 
-      userEvent.keyboard("{Control>}{h}{/Control}");
+      await user.keyboard('{Control>}h{/Control}');
 
       expect(alertMock).toHaveBeenCalledWith("Logging you out");
       expect(logOutMock).toHaveBeenCalled();
