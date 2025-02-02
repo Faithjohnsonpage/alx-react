@@ -1,0 +1,27 @@
+.notifications-container {
+  float: right; 
+}
+
+.menuItem {
+  margin: 5px;
+  padding-right: 10px;
+}
+
+.menuItem p {
+  text-align: right;
+}
+
+.Notifications {
+  border: 1px dashed lightcoral;
+  padding: 10px;
+  margin: 10px;
+  width: 450px;
+}
+
+[data-priority="default"] {
+  color: blue;
+}
+
+[data-priority="urgent"] {
+  color: red;
+}
