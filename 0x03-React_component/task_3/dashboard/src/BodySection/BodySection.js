@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 
-
 class BodySection extends Component {
   render() {
     const { title, children } = this.props;
@@ -13,5 +12,14 @@ class BodySection extends Component {
     );
   }
 }
+
+BodySection.propTypes = {
+  title: PropTypes.string.isRequired,
+  children: PropTypes.node,
+};
+
+BodySection.defaultProps = {
+  children: null,
+};
 
 export default BodySection;
