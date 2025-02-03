@@ -1,0 +1,21 @@
+.indent {
+  padding-left: 60px;
+}
+
+.shift {
+  padding-left: 60px;
+  padding-right: 10px;
+}
+
+.pad {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.margi {
+  margin-left: 10px;
+}
+
+.App-body {
+  min-height: calc(100vh - 480px);
+}

@@ -9,6 +9,12 @@ import PropTypes from "prop-types";
 import { getLatestNotification } from "../utils/utils";
 import BodySectionWithMarginBottom from "../BodySection/BodySectionWithMarginBottom";
 import BodySection from "../BodySection/BodySection";
+import WithLogging from "../HOC/WithLogging"; // Import the HOC
+
+// Wrap components with WithLogging
+const LoginWithLogging = WithLogging(Login);
+const HeaderWithLogging = WithLogging(Header);
+const CourseListWithLogging = WithLogging(CourseList);
 
 class App extends Component {
   handleKeyDown = (event) => {
@@ -19,7 +25,6 @@ class App extends Component {
   };
 
   componentDidMount() {
-    console.log(this.props.name);
     document.addEventListener("keydown", this.handleKeyDown);
   }
 
@@ -29,13 +34,11 @@ class App extends Component {
 
   render() {
     const { isLoggedIn } = this.props;
-
     const listCourses = [
       { id: 1, name: "ES6", credit: 60 },
       { id: 2, name: "Webpack", credit: 20 },
       { id: 3, name: "React", credit: 40 },
     ];
-
     const listNotifications = [
       { id: 1, type: "default", value: "New course available" },
       { id: 2, type: "urgent", value: "New resume available" },
@@ -45,22 +48,20 @@ class App extends Component {
     return (
       <>
         <Notifications displayDrawer={true} listNotifications={listNotifications} />
-        <Header />
+        <HeaderWithLogging /> {/* Use wrapped component */}
         <hr />
         {!isLoggedIn ? (
           <BodySectionWithMarginBottom title="Log in to continue">
-            <Login />
+            <LoginWithLogging /> {/* Use wrapped component */}
           </BodySectionWithMarginBottom>
         ) : (
           <BodySectionWithMarginBottom title="Course list">
-            <CourseList listCourses={listCourses} />
+            <CourseListWithLogging listCourses={listCourses} /> {/* Use wrapped component */}
           </BodySectionWithMarginBottom>
         )}
-
         <BodySection title="News from the School">
           <p>Graduation ceremony coming soon!</p>
         </BodySection>
-
         <hr />
         <Footer />
       </>
