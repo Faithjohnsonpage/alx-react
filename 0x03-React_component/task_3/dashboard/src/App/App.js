@@ -7,6 +7,8 @@ import Footer from "../Footer/Footer";
 import CourseList from "../CourseList/CourseList";
 import PropTypes from "prop-types";
 import { getLatestNotification } from "../utils/utils";
+import BodySectionWithMarginBottom from "../BodySection/BodySectionWithMarginBottom";
+import BodySection from "../BodySection/BodySection";
 
 class App extends Component {
   handleKeyDown = (event) => {
@@ -44,7 +46,20 @@ class App extends Component {
         <Notifications displayDrawer={true} listNotifications={listNotifications} />
         <Header />
         <hr />
-        {!isLoggedIn ? <Login /> : <CourseList listCourses={listCourses} />}
+        {!isLoggedIn ? (
+          <BodySectionWithMarginBottom title="Log in to continue">
+            <Login />
+          </BodySectionWithMarginBottom>
+        ) : (
+          <BodySectionWithMarginBottom title="Course list">
+            <CourseList listCourses={listCourses} />
+          </BodySectionWithMarginBottom>
+        )}
+
+        <BodySection title="News from the School">
+          <p>Graduation ceremony coming soon!</p>
+        </BodySection>
+
         <hr />
         <Footer />
       </>
