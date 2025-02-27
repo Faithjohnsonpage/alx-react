@@ -4,11 +4,11 @@ import Login from "../Login/Login";
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
 import CourseList from "../CourseList/CourseList";
-import PropTypes from "prop-types";
 import { getLatestNotification } from "../utils/utils";
 import BodySectionWithMarginBottom from "../BodySection/BodySectionWithMarginBottom";
 import BodySection from "../BodySection/BodySection";
 import { StyleSheet, css } from "aphrodite";
+import { AppContext } from './AppContext';
 
 
 const styles = StyleSheet.create({
@@ -22,9 +22,33 @@ const styles = StyleSheet.create({
 
 
 class App extends Component {
-
   state = {
     displayDrawer: false,
+    user: {
+      email: "",
+      password: "",
+      isLoggedIn: false,
+    }
+  };
+
+  logIn = (email, password) => {
+    this.setState({
+      user: {
+        email,
+        password,
+        isLoggedIn: true,
+      },
+    });
+  };
+
+  logOut = () => {
+    this.setState({
+      user: {
+        email: "",
+        password: "",
+        isLoggedIn: false,
+      }
+    });
   };
 
   handleDisplayDrawer = () => {
@@ -38,7 +62,7 @@ class App extends Component {
   handleKeyDown = (event) => {
     if (event.ctrlKey && event.key === "h") {
       alert("Logging you out");
-      this.props.logOut();
+      this.state.logOut(); // Use your logOut function from state
     }
   };
 
@@ -51,7 +75,7 @@ class App extends Component {
   }
 
   render() {
-    const { isLoggedIn } = this.props;
+    const { displayDrawer, user } = this.state;
 
     const listCourses = [
       { id: 1, name: "ES6", credit: 60 },
@@ -65,45 +89,36 @@ class App extends Component {
       { id: 3, type: "default", html: { __html: getLatestNotification() } },
     ];
 
+    // Create the context value from state
+    const contextValue = { user, logOut: this.logOut };
+
     return (
-      <>
+      <AppContext.Provider value={contextValue}>
         <Notifications
-          displayDrawer={this.state.displayDrawer}
+          displayDrawer={displayDrawer}
           handleDisplayDrawer={this.handleDisplayDrawer}
           handleHideDrawer={this.handleHideDrawer}
           listNotifications={listNotifications}
         />
         <Header />
         <hr className={css(styles.border)}/>
-        {!isLoggedIn ? (
+        {!user.isLoggedIn ? (
           <BodySectionWithMarginBottom title="Log in to continue">
-            <Login />
+            <Login logIn={this.logIn} />
           </BodySectionWithMarginBottom>
         ) : (
           <BodySectionWithMarginBottom title="Course list">
             <CourseList listCourses={listCourses} />
           </BodySectionWithMarginBottom>
         )}
-
         <BodySection title="News from the School">
-          <p className={css(styles.paragraph)}>The school community has been buzzing with excitement as students and faculty members celebrate a series of achievements this semester. Academic performances have reached new heights, with several students receiving national and international recognition for their research projects and innovations. Faculty members have also contributed significantly through groundbreaking studies, fostering an environment of intellectual curiosity and excellence. The administration continues to support these efforts by providing enhanced resources and funding opportunities for students to explore their full potential.</p>
+          <p className={css(styles.paragraph)}>The school community has been buzzing with excitement...</p>
         </BodySection>
-
         <hr className={css(styles.border)}/>
         <Footer />
-      </>
+      </AppContext.Provider>
     );
   }
 }
-
-App.propTypes = {
-  isLoggedIn: PropTypes.bool,
-  logOut: PropTypes.func,
-};
-
-App.defaultProps = {
-  isLoggedIn: false,
-  logOut: () => {},
-};
 
 export default App;

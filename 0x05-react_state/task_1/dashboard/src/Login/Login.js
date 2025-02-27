@@ -33,15 +33,14 @@ const styles = StyleSheet.create({
   }
 });
 
-export default function Login() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+export default function Login({ logIn }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [enableSubmit, setEnableSubmit] = useState(false);
 
   const handleLoginSubmit = (event) => {
     event.preventDefault();
-    setIsLoggedIn(true);
+    logIn();
   };
 
   const handleChangeEmail = (e) => {
@@ -80,7 +79,6 @@ export default function Login() {
 
         <input type="submit" value="OK" disabled={!enableSubmit} className={css(styles.buttonSpacing)} />
       </form>
-      // {isLoggedIn && <p>You are now logged in!</p>}
     </div>
   );
 }
