@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useContext } from "react";
 import logo from '../assets/logo.jpg';
 import { StyleSheet, css } from "aphrodite";
+import { AppContext } from '../App/AppContext';
 
 const styles = StyleSheet.create({
   header: {
@@ -34,10 +35,16 @@ const styles = StyleSheet.create({
     width: "100%",
     height: "100%",
     objectFit: "contain"
+  },
+  logoutLink: {
+    cursor: 'pointer',
+    textDecoration: 'underline'
   }
 });
 
 export default function Header() {
+  const { user, logOut } = useContext(AppContext);
+
   return (
     <header className={css(styles.header)} data-testid="app-header">
       <div className={css(styles.imgWrapper)}>
@@ -48,6 +55,16 @@ export default function Header() {
         />
       </div>
       <h1 className={css(styles.heading)}>School dashboard</h1>
+      {user.isLoggedIn && (
+        <div id="logoutSection">
+          Welcome {user.email} (<span 
+            onClick={logOut} 
+            className={css(styles.logoutLink)}
+          >
+            logout
+          </span>)
+        </div>
+      )}
     </header>
   );
 }

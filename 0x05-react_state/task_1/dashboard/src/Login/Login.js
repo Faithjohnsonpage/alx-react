@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { StyleSheet, css } from "aphrodite";
+import PropTypes from "prop-types";
 
 const styles = StyleSheet.create({
   paragraphPadding: {
@@ -40,7 +41,7 @@ export default function Login({ logIn }) {
 
   const handleLoginSubmit = (event) => {
     event.preventDefault();
-    logIn();
+    logIn(email, password);
   };
 
   const handleChangeEmail = (e) => {
@@ -82,3 +83,13 @@ export default function Login({ logIn }) {
     </div>
   );
 }
+
+// Set propTypes
+Login.propTypes = {
+  logIn: PropTypes.func.isRequired
+};
+
+// Set defaultProps
+Login.defaultProps = {
+  logIn: () => {}
+};
