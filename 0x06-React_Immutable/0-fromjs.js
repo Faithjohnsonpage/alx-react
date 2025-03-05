@@ -1,4 +1,4 @@
-const { fromJS } = require('immutable');
+import { fromJS } from "immutable";
 
 const example = {
   fear: true,
@@ -7,7 +7,7 @@ const example = {
   thing: -914767132
 };
 
-function getImmutableObject (object) {
+export default function getImmutableObject (object) {
   return fromJS(object);
 }
 
